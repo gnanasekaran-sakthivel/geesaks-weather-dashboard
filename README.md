@@ -59,3 +59,7 @@ To use the above Openweathermap API, an API key is needed. API key will be given
 - **API_CURRENT_WEATHER_ENDPOINT**=/data/2.5/weather
 - **API_5DAYFORECAST_ENDPOINT**=/data/2.5/forecast
 - **API_GEOCODE_ENDPOINT**=/geo/1.0/direct
+
+## Credits
+
+All the client code and part of the server code were provided by edX bootcamp training.
