@@ -18,6 +18,4 @@ Application maintains and shows a list of cities that are previously looked up. 
 
 Following is a typical screenshot of the application
 
-    ```md
-    ![main screenshot](/Develop/assets/images/screenshot01-geesaks-weather-dashboard.jpg)
-    ```
+![main screenshot](/Develop/assets/images/screenshot01-geesaks-weather-dashboard.jpg)
