@@ -50,13 +50,18 @@ class WeatherService {
   // TODO: Define the baseURL, API key, and city name properties
   private baseURL: string =
     process.env.API_BASE_URL || "https://api.openweathermap.org";
+  private forecast5DaysEndpoint: string =
+    process.env.API_5DAYFORECAST_ENDPOINT || "/data/2.5/forecast";
+  private geoCodeEndpoint: string =
+    process.env.API_GEOCODE_ENDPOINT || "/geo/1.0/direct";
+
   private apiKey: string = process.env.API_KEY || "";
   private cityName: string = "";
 
   // TODO: Create fetchLocationData method
   private async fetchLocationData(query: string) {
     const response = await fetch(
-      `${this.baseURL}/geo/1.0/direct?${query}&appid=${this.apiKey}`
+      `${this.baseURL}${this.geoCodeEndpoint}?${query}&appid=${this.apiKey}`
     );
     if (!response.ok) throw new Error("Failed to fetch location data");
     return response.json();
@@ -89,10 +94,11 @@ class WeatherService {
   }
 
   // TODO: Create fetchWeatherData method
+  // list of weather condition codes: https://openweathermap.org/weather-conditions
   private async fetchWeatherData(coordinates: Coordinates) {
     const weatherQuery = this.buildWeatherQuery(coordinates);
     const response = await fetch(
-      `${this.baseURL}/data/2.5/forecast?${weatherQuery}&appid=${this.apiKey}`
+      `${this.baseURL}${this.forecast5DaysEndpoint}?${weatherQuery}&appid=${this.apiKey}`
     );
     if (!response.ok) throw new Error("Failed to retrieve weather data");
     return response.json();
